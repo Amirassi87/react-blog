@@ -25,7 +25,13 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route
-        index
+        path="/articles"
+        element={<ArticlesList />}
+        loader={articlesListLoader}
+        errorElement={<ArticleError />}
+      />
+      <Route
+        path="/"
         element={<ArticlesList />}
         loader={articlesListLoader}
         errorElement={<ArticleError />}
