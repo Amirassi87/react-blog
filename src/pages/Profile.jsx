@@ -1,68 +1,60 @@
 import { useForm } from 'react-hook-form';
-import { useState, useContext, useEffect, useRef } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from './AuthContextProvider';
-import Loader from '../articles/Loader.jsx';
+import Loader from '../articles/Loader';
 import ArticleError from '../articles/ArticleError';
 
-export default function SignUp() {
-	const { setUser } = useContext(UserContext);
-	const [loading, setLoading] = useState(false);
+export default function Profile() {
+	const { user, setUser } = useContext(UserContext);
 	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(false);
+
+	const api_key = user.user.token;
 
 	const {
 		register,
 		handleSubmit,
-		trigger,
-		watch,
 		formState: { errors },
 	} = useForm({
-		mode: 'onTouched',
 		defaultValues: {
-			username: '',
-			email: '',
-			password: '',
-			repeat: '',
-			consent: false,
+			username: user.user.username,
+			email: user.user.email,
+			bio: user.user.bio,
+			avatar_img: user.user.image,
 		},
 	});
 
-	const [password] = watch(['password']);
-
 	const navigate = useNavigate();
-	const touchedFields = useRef({});
-
-	useEffect(() => {
-		if (touchedFields.current.repeat) {
-			trigger('repeat');
-		}
-	}, [password, trigger]);
 
 	const onSubmit = (formData) => {
 		setLoading(true);
-		fetch('https://realworld.habsidev.com/api/users', {
-			method: 'POST',
+		fetch('https://realworld.habsidev.com/api/user', {
+			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization: `Token ${api_key}`,
 			},
 			body: JSON.stringify({
-				user: {
-					username: formData.username,
-					email: formData.email,
-					password: formData.password,
-				},
+				bio: formData.bio,
+				email: formData.email,
+				image: formData.avatar_img,
+				username: formData.username,
 			}),
 		})
-			.then((res) => {
-				if (!res.ok) throw Error('Signup not successful, Try again');
-				return res.json();
+			.then((response) => {
+				if (!response.ok) {
+					throw Error('Could not update the info');
+				}
+				return response.json();
 			})
+
 			.then((data) => {
 				const loginInfo = JSON.stringify(data);
 				localStorage.setItem('user', loginInfo);
 				setUser(data);
 				setLoading(false);
-				navigate('/');
+				navigate('/pages/profile');
 			})
 			.catch((err) => {
 				setError(err);
@@ -86,7 +78,7 @@ export default function SignUp() {
 
 	return (
 		<div className="register-user">
-			<p>Create new account</p>
+			<p>Edit Profile</p>
 			<div className="register-form">
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className="user-name">
@@ -110,7 +102,7 @@ export default function SignUp() {
 						<label htmlFor="email">Email address</label>
 						<input
 							id="email"
-							type="email"
+							type="text"
 							{...register('email', {
 								required: 'This field is required',
 								pattern: {
@@ -123,12 +115,12 @@ export default function SignUp() {
 						<span>{errors.email?.message}</span>
 					</div>
 
-					<div className="password">
-						<label htmlFor="password">Password</label>
+					<div className="bio">
+						<label htmlFor="bio">bio</label>
 						<input
-							id="password"
-							type="password"
-							{...register('password', {
+							id="bio"
+							type="text"
+							{...register('bio', {
 								required: 'This field is required',
 								minLength: { value: 6, message: 'Min length is 6 characters' },
 								maxLength: {
@@ -136,49 +128,29 @@ export default function SignUp() {
 									message: 'Max length is 40 characters',
 								},
 							})}
-							placeholder="Password"
+							placeholder="bio"
 						/>
-						<span>{errors.password?.message}</span>
+						<span>{errors.bio?.message}</span>
 					</div>
-					<div className="repeat-password">
-						<label htmlFor="repeat">Repeat Password</label>
+					<div className="avatar_img">
+						<label htmlFor="avatar_img">Avatar image (url)</label>
 						<input
-							id="repeat"
-							type="password"
-							{...register('repeat', {
+							id="avatar_img"
+							type="text"
+							{...register('avatar_img', {
 								required: 'This field is required',
-								validate: (value) =>
-									value === password || 'Passwords do not match',
-								minLength: { value: 6, message: 'Min length is 6 characters' },
-								maxLength: {
-									value: 40,
-									message: 'Max length is 40 characters',
+								pattern: {
+									value: /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg|webp))$/i,
+									message: 'Enter a valid image URL',
 								},
 							})}
-							placeholder="Password"
+							placeholder="avatar_img"
 						/>
-						<span>{errors.repeat?.message}</span>
+						<span>{errors.avatar_img?.message}</span>
 					</div>
-					<div className="consent">
-						<input
-							id="consent"
-							type="checkbox"
-							{...register('consent', { required: 'This field is required' })}
-						/>
 
-						<label htmlFor="consent">
-							I agree to the processing of my personal information
-						</label>
-						<span>{errors.consent?.message}</span>
-					</div>
 					<div className="create-user">
-						<input type="submit" name="create-user" value="Create" />
-						<label>
-							Already have an account?
-							<span>
-								<Link to={`/pages/sign-in`}>Sign In</Link>
-							</span>
-						</label>
+						<input type="submit" name="create-user" value="Save" />
 					</div>
 				</form>
 			</div>
