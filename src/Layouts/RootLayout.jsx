@@ -14,26 +14,26 @@ export default function RootLayout() {
 					</NavLink>
 					{user ? (
 						<>
-							<NavLink className="create-article" to="/pages/sign-up">
+							<NavLink className="create-article" to="/articles/new-article">
 								Create article
 							</NavLink>
-							<NavLink to="/pages/profile">
+							<NavLink to="/profile">
 								<div className="user">
 									<div className="username">{user.user.username}</div>
 									<img
 										alt="user image"
-										src={user?.user?.image || 'src/assets/user.png'}
+										src={user?.user?.image || '/src/assets/user.png'}
 									/>
 								</div>
 							</NavLink>
-							<NavLink className="logout-btn" to="/pages/log-out">
+							<NavLink className="logout-btn" to="/log-out">
 								Log Out
 							</NavLink>
 						</>
 					) : (
 						<>
-							<NavLink to="/pages/sign-in">Sign In</NavLink>
-							<NavLink className="signup-btn" to="/pages/sign-up">
+							<NavLink to="/sign-in">Sign In</NavLink>
+							<NavLink className="signup-btn" to="/sign-up">
 								Sign Up
 							</NavLink>
 						</>

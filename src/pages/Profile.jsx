@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from './AuthContextProvider';
 import Loader from '../articles/Loader';
 import ArticleError from '../articles/ArticleError';
@@ -29,7 +29,7 @@ export default function Profile() {
 
 	const onSubmit = (formData) => {
 		setLoading(true);
-		fetch('https://realworld.habsidev.com/api/user', {
+		fetch('https://realworld.habsida.net/api/user', {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ export default function Profile() {
 				localStorage.setItem('user', loginInfo);
 				setUser(data);
 				setLoading(false);
-				navigate('/pages/profile');
+				navigate('/profile');
 			})
 			.catch((err) => {
 				setError(err);
@@ -78,7 +78,7 @@ export default function Profile() {
 
 	return (
 		<div className="register-user">
-			<p>Edit Profile</p>
+			<p className="title">Edit Profile</p>
 			<div className="register-form">
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className="user-name">
@@ -120,14 +120,14 @@ export default function Profile() {
 						<input
 							id="bio"
 							type="text"
-							{...register('bio', {
-								required: 'This field is required',
-								minLength: { value: 6, message: 'Min length is 6 characters' },
-								maxLength: {
-									value: 40,
-									message: 'Max length is 40 characters',
-								},
-							})}
+							// {...register('bio', {
+							// 	required: 'This field is required',
+							// 	minLength: { value: 6, message: 'Min length is 6 characters' },
+							// 	maxLength: {
+							// 		value: 40,
+							// 		message: 'Max length is 40 characters',
+							// 	},
+							// })}
 							placeholder="bio"
 						/>
 						<span>{errors.bio?.message}</span>

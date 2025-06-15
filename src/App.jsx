@@ -5,15 +5,16 @@ import {
 	RouterProvider,
 } from 'react-router-dom';
 import 'inter-ui/inter.css';
+import './Modal/Modal.css';
 
 //pages
 import ArticleDetails, {
 	ArticleDetailsLoader,
 } from './articles/ArticleDetails';
 import ArticlesList from './articles/ArticlesList';
-// import CreateArticle from "./pages/CreateArticle";
-// import EditArticle from "./pages/EditArticle";
-
+import NewArticle from './articles/NewArticle';
+import EditArticle, { ArticleLoader } from './articles/EditArticle';
+import Modal from './Modal/Modal';
 import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -23,6 +24,7 @@ import ArticleError from './articles/ArticleError';
 import Loader from './articles/Loader';
 import AuthContextProvider from './pages/AuthContextProvider';
 import NotFound from './pages/NotFound';
+import PrivateRoute from './pages/PrivateRoute';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -30,19 +32,41 @@ const router = createBrowserRouter(
 			<Route path="/loader" element={<Loader />} />
 			<Route path="/articles" element={<ArticlesList />} />
 			<Route path="/" element={<ArticlesList />} />
-			<Route path="/pages/sign-in" element={<SignIn />} />
-			<Route path="/pages/sign-up" element={<SignUp />} />
-			<Route path="/pages/log-out" element={<LogOut />} />
-			<Route path="/pages/profile" element={<Profile />} />
-
 			<Route
 				path="articles/:slug"
 				element={<ArticleDetails />}
 				loader={ArticleDetailsLoader}
 			/>
-			{/* <Route path="/pages/CreateArticle" element={<CreateArticle />} />
-        <Route path="/pages/EditArticle" element={<EditArticle />} /> */}
-			{/* </Route> */}
+			<Route
+				path="/articles/new-article"
+				element={
+					<PrivateRoute>
+						<NewArticle />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/articles/:slug/edit"
+				element={
+					<PrivateRoute>
+						<EditArticle />
+					</PrivateRoute>
+				}
+				loader={ArticleLoader}
+			/>
+
+			<Route path="/sign-in" element={<SignIn />} />
+			<Route path="/sign-up" element={<SignUp />} />
+			<Route path="/log-out" element={<LogOut />} />
+			<Route
+				path="/profile"
+				element={
+					<PrivateRoute>
+						<Profile />
+					</PrivateRoute>
+				}
+			/>
+			<Route path="/modal" element={<Modal />} />
 			<Route path="*" element={<NotFound />} />
 		</Route>
 	)
@@ -51,7 +75,7 @@ const router = createBrowserRouter(
 function App() {
 	return (
 		<AuthContextProvider>
-			<RouterProvider router={router} />;
+			<RouterProvider router={router} />
 		</AuthContextProvider>
 	);
 }

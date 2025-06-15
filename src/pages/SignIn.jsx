@@ -25,7 +25,7 @@ export default function SignIn() {
 
 	const onSubmit = (formData) => {
 		setLoading(true);
-		fetch('https://realworld.habsidev.com/api/users/login', {
+		fetch('https://realworld.habsida.net/api/users/login', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ export default function SignIn() {
 		);
 	return (
 		<div className="register-user">
-			<p>Sign In</p>
+			<p className="title">Sign In</p>
 			<div className="register-form">
 				{error && <ArticleError />}
 				{loading && <Loader />}
@@ -115,7 +115,7 @@ export default function SignIn() {
 						<label>
 							Don't have an account?
 							<span>
-								<Link to={`/pages/sign-up`}>Sign Up</Link>
+								<Link to={`/sign-up`}>Sign Up</Link>
 							</span>
 						</label>
 					</div>

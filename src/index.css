@@ -234,7 +234,7 @@ header nav a {
 	flex-direction: column;
 	max-width: 928px;
 	background-color: #ffffff;
-	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+	box-shadow: 4px 4px 106px 50px rgba(0, 0, 0, 0.07);
 	border-radius: 5px;
 }
 
@@ -256,7 +256,8 @@ header nav a {
 	color: #1890ff;
 }
 
-.tags span {
+.article-tags span {
+	display: inline;
 	border: 1px solid var(--primary);
 	font-size: 0.75em;
 	font-weight: 400;
@@ -264,11 +265,14 @@ header nav a {
 	padding: 0.2rem;
 }
 
-.aricles-likes .icon {
+.articles-likes {
+	display: flex;
+}
+.articles-likes .icon {
 	margin-right: 0.3rem;
 }
 
-.aricle-summary {
+.articles-summary {
 	font-size: 0.75em;
 	line-height: 1.375rem;
 	color: rgba(0, 0, 0, 0.75);
@@ -281,6 +285,8 @@ header nav a {
 	justify-content: flex-end;
 	align-items: flex-start;
 	gap: 0.7rem;
+	  flex-wrap: wrap;
+
 }
 
 .author {
@@ -316,6 +322,157 @@ header nav a {
 	margin-right: 5rem;
 	color: rgba(0, 0, 0, 0.75);
 }
+
+/* new article form */
+
+.article-form input{
+	width: 874px;
+	height: 40px;
+	border: 1.5px solid rgba(217, 217, 217, 1);
+	margin-top: 3px;
+}
+
+.article-form textarea{
+	border-radius: 4px;
+	width: 874px;
+	height: 192px;
+	border: 1.5px solid rgba(217, 217, 217, 1);
+	margin-top: 3px;
+}
+
+.article-form textarea::placeholder{
+	font-size: 16px;
+	padding-left: 10px;
+	color: rgba(191, 191, 191, 1);
+}
+
+.article-form div {
+	margin: 1.5rem;
+}
+
+.article-form label, span {
+	display: block;
+	font-size: 0.875em;
+	margin-bottom: 0.1rem;
+}
+
+.article-form input::placeholder {
+	font-size: 16px;
+	padding-left: 10px;
+	color: rgba(191, 191, 191, 1);
+}
+
+.article-form input:hover {
+	box-shadow: 0px 1px 3px rgb(185, 189, 192);
+}
+
+.article-form textarea:hover {
+	box-shadow: 0px 1px 3px rgb(185, 189, 192);
+}
+
+.tags input {
+ width: 300px;
+}
+
+.tags ul {
+ padding: 0;
+}
+
+.tags ul li{
+	text-decoration: none;
+	display: flex;
+	gap:15px;
+}
+
+
+
+.tags ul input {
+	width: 120px;
+	color: #F5222D;
+	border: 1px solid #F5222D;
+	border-radius: 4px;
+	background-color: transparent;
+
+}
+
+.article-permission{
+	display: flex;
+	position: relative;
+}
+.article-permission input{
+	width: 78px;
+	height: 31px;
+	color: #F5222D;
+	border: 1px solid #F5222D;
+	border-radius: 4px;
+	background-color: transparent;
+	cursor: pointer;
+	margin-right: 0.5rem;
+}
+
+.article-permission input:hover{
+	background-color: #F5222D;
+	color: #ffffff;
+}
+.edit-article {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 65px;
+	height: 31px;
+	color: rgba(82, 196, 26, 1);
+	border: 1px solid rgba(82, 196, 26, 1);
+	border-radius: 4px;
+	background-color: transparent;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.edit-article:hover{
+	background-color:rgba(82, 196, 26, 1);
+	color: #ffffff;
+}
+
+.tags ul input:hover{
+	color: #ffffff;
+	background-color: #F5222D;
+	cursor: pointer;
+}
+
+.tags :nth-child(4) {
+	width: 136px;
+	margin-left: 1rem;
+	color: rgba(24, 144, 255, 1);
+	border: 1px solid rgba(24, 144, 255, 1);
+	border-radius: 4px;
+	background-color: transparent;
+}
+
+.tags :nth-child(4):hover {
+	color: #ffffff;
+	background-color: rgba(24, 144, 255, 1);
+	cursor: pointer;
+
+}
+
+.tag {
+	width: 279px;
+	height: 30px;
+	border: 1.5px solid rgba(217, 217, 217, 1);
+	padding: 10px 10px 0px 15px;
+	margin-top: 5px;
+	
+	
+}
+.send input {
+	background-color: rgba(24, 144, 255, 1);
+	color: rgba(255, 255, 255, 1);
+	border-radius: 4px;
+	width: 319px;
+	cursor: pointer;
+
+}
+
 
 /* paginator */
 .paginator {
@@ -373,7 +530,7 @@ header nav a {
 	box-shadow: 4px 4px 106px 50px rgba(0, 0, 0, 0.07);
 }
 
-.register-user p {
+.title {
 	font-size: 1.25em;
 	font-weight: 500;
 	margin: 50px auto 1px;

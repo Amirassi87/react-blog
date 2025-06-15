@@ -46,7 +46,7 @@ export default function ArticlesList() {
 	};
 
 	useEffect(() => {
-		fetch('https://realworld.habsidev.com/api/articles')
+		fetch('https://realworld.habsida.net/api/articles')
 			.then((res) => {
 				if (!res.ok) {
 					throw Error('Could not fetch the articles');
@@ -79,19 +79,19 @@ export default function ArticlesList() {
 								<p className="article-title">
 									<Link to={`/articles/${article.slug}`}>{article.title}</Link>
 								</p>
-								<p className="aricles-likes">
+								<p className="articles-likes">
 									<span className="icon">
 										<FontAwesomeIcon icon={farHeart} />
 									</span>
 									<span className="likes-counts">{article.favoritesCount}</span>
 								</p>
 							</div>
-							<div className="tags">
+							<div className="article-tags">
 								{article.tagList.map((tag) => (
 									<span key={tag}>{tag}</span>
 								))}
 							</div>
-							<div className="aricle-summary">{article.description}</div>
+							<div className="article-summary">{article.description}</div>
 						</div>
 						<div className="article-author-info">
 							<div className="author">

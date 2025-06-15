@@ -40,7 +40,7 @@ export default function SignUp() {
 
 	const onSubmit = (formData) => {
 		setLoading(true);
-		fetch('https://realworld.habsidev.com/api/users', {
+		fetch('https://realworld.habsida.net/api/users', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ export default function SignUp() {
 
 	return (
 		<div className="register-user">
-			<p>Create new account</p>
+			<p className="title">Create new account</p>
 			<div className="register-form">
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className="user-name">
@@ -176,7 +176,7 @@ export default function SignUp() {
 						<label>
 							Already have an account?
 							<span>
-								<Link to={`/pages/sign-in`}>Sign In</Link>
+								<Link to={`/sign-in`}>Sign In</Link>
 							</span>
 						</label>
 					</div>
