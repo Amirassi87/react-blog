@@ -29,7 +29,14 @@ import PrivateRoute from './pages/PrivateRoute';
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<RootLayout />} errorElement={<ArticleError />}>
-			<Route path="/loader" element={<Loader />} />
+			<Route
+				path="/loader"
+				element={
+					<PrivateRoute>
+						<Loader />
+					</PrivateRoute>
+				}
+			/>
 			<Route path="/articles" element={<ArticlesList />} />
 			<Route path="/" element={<ArticlesList />} />
 			<Route
@@ -66,7 +73,14 @@ const router = createBrowserRouter(
 					</PrivateRoute>
 				}
 			/>
-			<Route path="/modal" element={<Modal />} />
+			<Route
+				path="/modal"
+				element={
+					<PrivateRoute>
+						<Modal />
+					</PrivateRoute>
+				}
+			/>
 			<Route path="*" element={<NotFound />} />
 		</Route>
 	)

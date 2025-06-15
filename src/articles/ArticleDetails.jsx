@@ -17,9 +17,8 @@ export default function ArticleDetails() {
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 
-	const api_key = user.user.token;
-
 	const deleteArticle = () => {
+		const api_key = user.user.token;
 		setModalIsOpen(false);
 		setLoading(true);
 		fetch(`https://realworld.habsida.net/api/articles/${article.slug}`, {
@@ -82,7 +81,7 @@ export default function ArticleDetails() {
 							src={article.author?.image || '/src/assets/user.png'}
 						/>
 					</div>
-					{user.user.username === article.author.username ? (
+					{user?.user?.username === article.author.username ? (
 						<div className="article-permission">
 							<input
 								type="button"
