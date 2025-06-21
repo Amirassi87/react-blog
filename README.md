@@ -27,7 +27,7 @@
 <br/>
 
 <h3>Articles pagination</h3>
-<img src="https://s14.gifyu.com/images/bHhrR.gif" alt="project-screenshot" width="600" height="400">
+<img src="https://s14.gifyu.com/images/bHhA3.gif" alt="project-screenshot" width="600" height="400">
 <br/>
 
   
