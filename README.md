@@ -23,7 +23,7 @@
 <br/>
 
 <h3>Edit article</h3>
-<img src="https://s14.gifyu.com/images/bHhfF.gif" alt="project-screenshot" width="600" height="400">
+<img src="https://s14.gifyu.com/images/bHhBX.gif" alt="project-screenshot" width="600" height="400">
 <br/>
 
 <h3>Articles pagination</h3>
