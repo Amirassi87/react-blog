@@ -12,7 +12,7 @@
 <h2>Project Screenshots:</h2>
 
 <h3>Register new user</h3>
-<img src="https://s14.gifyu.com/images/bHhGt.gif" alt="project-screenshot" width="600" height="400">
+<img src="https://s14.gifyu.com/images/bHhGe.gif" alt="project-screenshot" width="600" height="400">
 <br/>
 
 
