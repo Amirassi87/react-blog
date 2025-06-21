@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import Markdown from 'react-markdown';
@@ -11,14 +12,16 @@ import ArticleError from './ArticleError';
 
 export default function ArticleDetails() {
 	const { user } = useContext(UserContext);
-	const article = useLoaderData();
+	//const article = useLoaderData();
+	const loadedArticle = useLoaderData();
+	const [article, setArticle] = useState(loadedArticle);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
+	const api_key = user?.user?.token || null;
 
 	const deleteArticle = () => {
-		const api_key = user.user.token;
 		setModalIsOpen(false);
 		setLoading(true);
 		fetch(`https://realworld.habsida.net/api/articles/${article.slug}`, {
@@ -43,6 +46,64 @@ export default function ArticleDetails() {
 			});
 	};
 
+	const fav = () => {
+		if (user?.user) {
+			setArticle({
+				...article,
+				favorited: true,
+				favoritesCount: article.favoritesCount + 1,
+			});
+
+			fetch(
+				`https://realworld.habsida.net/api/articles/${article.slug}/favorite`,
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `Token ${api_key}`,
+					},
+				}
+			)
+				.then((response) => {
+					if (!response.ok) {
+						throw Error('Could not favorite the article');
+					}
+				})
+				.catch((err) => {
+					setError(err);
+				});
+		}
+	};
+
+	const unfav = () => {
+		setArticle({
+			...article,
+			favorited: false,
+			favoritesCount: article.favoritesCount - 1,
+		});
+
+		fetch(
+			`https://realworld.habsida.net/api/articles/${article.slug}/favorite`,
+			{
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Token ${api_key}`,
+				},
+			}
+		)
+			.then((response) => {
+				if (!response.ok) {
+					throw Error('Could not unfavorite the article');
+				}
+			})
+			.catch((err) => {
+				setError(err);
+			});
+
+		//console.log(currentArticles);
+	};
+
 	if (loading) {
 		return <Loader />;
 	}
@@ -56,9 +117,12 @@ export default function ArticleDetails() {
 						<p className="article-title">{article.title}</p>
 						<div className="articles-likes">
 							<span className="icon">
-								<FontAwesomeIcon icon={farHeart} />
+								{article.favorited === false ? (
+									<FontAwesomeIcon onClick={() => fav()} icon={farHeart} />
+								) : (
+									<FontAwesomeIcon onClick={() => unfav()} icon={fasHeart} />
+								)}
 							</span>
-							<span className="likes-counts">{article.favoritesCount}</span>
 						</div>
 					</div>
 					<div className="article-tags">

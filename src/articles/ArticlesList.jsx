@@ -1,20 +1,25 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
+
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import Loader from './Loader.jsx';
 import ArticleError from './ArticleError';
+import { UserContext } from '../pages/AuthContextProvider';
 
 import { format } from 'date-fns';
 
 export default function ArticlesList() {
+	const { user } = useContext(UserContext);
 	const [loading, setLoading] = useState(true);
 	const [articlesList, setArticles] = useState([]);
 	const [error, setError] = useState(null);
-
 	const [currentPage, setCurrentPage] = useState(1);
 	const numberOfPages = Math.ceil(articlesList.length / 5);
 	const articlesPerPage = 5;
+
+	const api_key = user?.user?.token || null;
 
 	const lastArticleIndex = currentPage * articlesPerPage;
 	const firstArticleIndex = lastArticleIndex - articlesPerPage;
@@ -43,6 +48,73 @@ export default function ArticlesList() {
 		currentPage === 1
 			? setCurrentPage(numberOfPages)
 			: setCurrentPage(currentPage - 1);
+	};
+
+	const fav = (slug) => {
+		if (user?.user) {
+			setArticles(
+				articlesList.map((article) => {
+					return article.slug === slug
+						? {
+								...article,
+								favorited: true,
+								favoritesCount: article.favoritesCount + 1,
+							}
+						: article;
+				})
+			);
+
+			fetch(`https://realworld.habsida.net/api/articles/${slug}/favorite`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Token ${api_key}`,
+				},
+			})
+				.then((response) => {
+					if (!response.ok) {
+						throw Error('Could not favorite the article');
+					}
+				})
+				.catch((err) => {
+					setError(err);
+				});
+		}
+		// else {
+		// 	//throw Error('You need to login');
+		// 	setError('test');
+		// }
+	};
+
+	const unfav = (slug) => {
+		setArticles(
+			articlesList.map((article) => {
+				return article.slug === slug
+					? {
+							...article,
+							favorited: false,
+							favoritesCount: article.favoritesCount - 1,
+						}
+					: article;
+			})
+		);
+		fetch(`https://realworld.habsida.net/api/articles/${slug}/favorite`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Token ${api_key}`,
+			},
+		})
+			.then((response) => {
+				if (!response.ok) {
+					throw Error('Could not unfavorite the article');
+				}
+			})
+			.catch((err) => {
+				setError(err);
+			});
+
+		//console.log(currentArticles);
 	};
 
 	useEffect(() => {
@@ -81,7 +153,17 @@ export default function ArticlesList() {
 								</p>
 								<p className="articles-likes">
 									<span className="icon">
-										<FontAwesomeIcon icon={farHeart} />
+										{article.favorited === false ? (
+											<FontAwesomeIcon
+												onClick={() => fav(article.slug)}
+												icon={farHeart}
+											/>
+										) : (
+											<FontAwesomeIcon
+												onClick={() => unfav(article.slug)}
+												icon={fasHeart}
+											/>
+										)}
 									</span>
 									<span className="likes-counts">{article.favoritesCount}</span>
 								</p>

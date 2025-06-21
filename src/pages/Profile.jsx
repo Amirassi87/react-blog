@@ -138,7 +138,6 @@ export default function Profile() {
 							id="avatar_img"
 							type="text"
 							{...register('avatar_img', {
-								required: 'This field is required',
 								pattern: {
 									value: /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg|webp))$/i,
 									message: 'Enter a valid image URL',

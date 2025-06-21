@@ -1,12 +1,92 @@
-# React + Vite
+<h1 align="center" id="title">React Blog App</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p id="description">React Blog is a Single Page Application (SPA) using react framework to add and manage articles added by users. The app allows users to register with fields validation and modify their profiles. It allows them to create modify and delete articles. Also favorite the articles they like. logged in users have full control on articles while anonymous users can view articles only. Article pagination feature also added to improve user experience and to make page load faster.</p>
+<br>
+<br>
+<br>
 
-Currently, two official plugins are available:
+<h2>🚀 Demo</h2>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[https://react-blog-delta-peach.vercel.app/](https://react-blog-delta-peach.vercel.app/)
+<br>
+<br>
+<br>
 
-## Expanding the ESLint configuration
+<h3>Register new user</h3>
+<img src="https://i.ibb.co/GQFKBGhL/signup.gif" alt="signup" border="0">
+<br>
+<br>
+<br>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<h3>Update profile</h3>
+<img src="https://i.ibb.co/0y6GNwRk/updateprofile.gif" alt="updateprofile" border="0">
+<br>
+<br>
+<br>
+<h3>Create new article</h3>
+<img src="https://i.ibb.co/j9cPR83K/createarticle.gif" alt="createarticle" border="0">
+<br>
+<br>
+<br>
+<h3>Edit article</h3>
+<img src="https://i.ibb.co/jvTJFDSw/edit-Article.gif" alt="edit-Article" border="0">
+<br>
+<br>
+<br>
+<h3>Articles pagination</h3>
+<img src="https://i.ibb.co/6JLS8rxh/paginationandlogout.gif" alt="paginationandlogout" border="0">
+<br>
+<br>
+<br>
+
+  
+<h2>🧐 Features</h2>
+
+Here're some of the project's best features:
+
+*   Add Article
+*   Edit Article
+*   Remove Article
+*   Articles pagination
+*   User authentication
+*   Edit user profile
+*   Forms validation
+*   Error Handling
+*   Article favorite
+<br>
+<br>
+<br>
+
+<h2>🛠️ Installation Steps:</h2>
+
+<p>1. clone the project</p>
+
+```
+https://github.com/Amirassi87/react-blog.gitcd to-do-app npm install
+```
+
+<p>2. Start the project</p>
+
+```
+npm run dev
+```
+
+  
+  <br>
+<br>
+<br>
+
+<h2>💻 Built with</h2>
+
+Technologies used in the project:
+
+*   React with hooks
+*   React Router DOM
+*   React Context API
+*   fetch() API
+*   date-fns
+*   FontAwesome
+*   CSS
+*   Vite
+*   React hook form
+*   React markdown
