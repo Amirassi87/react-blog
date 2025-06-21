@@ -10,24 +10,24 @@
 <br/>
 
 <h3>Register new user</h3>
-<img src="https://s14.gifyu.com/images/bHhVL.gif" alt="project-screenshot" width="600" height="400">
+<img src="https://s14.gifyu.com/images/bHhfI.gif" alt="project-screenshot" width="600" height="400">
 <br/>
 
 
 <h3>Update profile</h3>
-<img src="https://s14.gifyu.com/images/bHhdO.gif" alt="project-screenshot" width="600" height="400">
+<img src="https://s14.gifyu.com/images/bHhf7.gif" alt="project-screenshot" width="600" height="400">
 <br/>
 
 <h3>Create new article</h3>
-<img src="https://s14.gifyu.com/images/bHhdB.gif" alt="project-screenshot" width="600" height="400">
+<img src="https://s14.gifyu.com/images/bHhfq.gif" alt="project-screenshot" width="600" height="400">
 <br/>
 
 <h3>Edit article</h3>
-<img src="https://s14.gifyu.com/images/bHhdG.gif" alt="project-screenshot" width="600" height="400">
+<img src="https://s14.gifyu.com/images/bHhfF.gif" alt="project-screenshot" width="600" height="400">
 <br/>
 
 <h3>Articles pagination</h3>
-<img src="https://s14.gifyu.com/images/bHhdy.gif" alt="project-screenshot" width="600" height="400">
+<img src="https://s14.gifyu.com/images/bHhfP.gif" alt="project-screenshot" width="600" height="400">
 <br/>
 
   
