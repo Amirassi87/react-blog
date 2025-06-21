@@ -2,41 +2,32 @@
 
 <p id="description">React Blog is a Single Page Application (SPA) using react framework to add and manage articles added by users. The app allows users to register with fields validation and modify their profiles. It allows them to create modify and delete articles. Also favorite the articles they like. logged in users have full control on articles while anonymous users can view articles only. Article pagination feature also added to improve user experience and to make page load faster.</p>
 <br>
-<br>
-<br>
+
 
 <h2>🚀 Demo</h2>
 
 [https://react-blog-delta-peach.vercel.app/](https://react-blog-delta-peach.vercel.app/)
 <br>
-<br>
-<br>
 
 <h3>Register new user</h3>
-<img src="https://i.ibb.co/GQFKBGhL/signup.gif" alt="signup" border="0">
-<br>
-<br>
+<img src="https://i.ibb.co/GQFKBGhL/signup.gif" alt="project-screenshot" width="1120" height="704/">
 <br>
 
+
 <h3>Update profile</h3>
-<img src="https://i.ibb.co/0y6GNwRk/updateprofile.gif" alt="updateprofile" border="0">
+<img src="https://i.ibb.co/0y6GNwRk/updateprofile.gif" alt="project-screenshot" width="1120" height="704/">
 <br>
-<br>
-<br>
+
 <h3>Create new article</h3>
-<img src="https://i.ibb.co/j9cPR83K/createarticle.gif" alt="createarticle" border="0">
+<img src="https://i.ibb.co/j9cPR83K/createarticle.gif" alt="project-screenshot" width="1120" height="704/">
 <br>
-<br>
-<br>
+
 <h3>Edit article</h3>
-<img src="https://i.ibb.co/jvTJFDSw/edit-Article.gif" alt="edit-Article" border="0">
+<img src="https://i.ibb.co/jvTJFDSw/edit-Article.gif" alt="project-screenshot" width="1120" height="704/">
 <br>
-<br>
-<br>
+
 <h3>Articles pagination</h3>
-<img src="https://i.ibb.co/6JLS8rxh/paginationandlogout.gif" alt="paginationandlogout" border="0">
-<br>
-<br>
+<img src="https://i.ibb.co/6JLS8rxh/paginationandlogout.gif" alt="project-screenshot" width="1120" height="704/">
 <br>
 
   
@@ -54,8 +45,7 @@ Here're some of the project's best features:
 *   Error Handling
 *   Article favorite
 <br>
-<br>
-<br>
+
 
 <h2>🛠️ Installation Steps:</h2>
 
@@ -73,8 +63,6 @@ npm run dev
 
   
   <br>
-<br>
-<br>
 
 <h2>💻 Built with</h2>
 
